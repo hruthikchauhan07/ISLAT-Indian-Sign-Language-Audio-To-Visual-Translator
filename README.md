@@ -1,51 +1,97 @@
-# Speech-to-Sign-language-Translator
-**An application which takes in live speech or audio recording as input, converts it into text and displays the relevant Indian Sign Language images or GIFs.**
-- Front-end using EasyGui.
-- Speech as input through microphone using PyAudio. 
-- Speech recognition using Google Speech API and Sphix(for offline use).
-- Text Preprocessing using NLP.
-- Dictionary based Machine Translation.
+# Indian Sign Language Audio-to-Visual Translator (ISLAT)
 
-## To run the application.
-1. Open the Downloads folder and then open the terminal.
-2. From the terminal, run the *main* python file using the command **python main.py**.
-3. The application interface appears on the screen.
-4. Hit the record button to start taking speech as input.
-5. Any speech recorded is then processed and respective outputs are shown accordingly.
-6. To exit the application using speech, say *goodbye*.
+**An application designed to convert spoken language into Indian Sign Language (ISL) visuals, enabling effective communication with the deaf and speech-impaired community.**
 
+---
 
-**Sign language is a visual language that is used by deaf people as their mother tongue. Unlike acoustically conveyed sound patterns, sign language uses body language and manual communication to fluidly convey the thoughts of a person. Due to considerable time required in learning the Sign Language,  it becomes difficult to communicate with these specially abled people, and thus creates a communication gap.**
+## Features
+- **User-Friendly Interface**: Built using EasyGui for simplicity and ease of use.
+- **Speech Recognition**: Real-time transcription through Google Speech API for online use and CMU Sphinx for offline functionality.
+- **Text Preprocessing**: Employs natural language processing for accurate text handling and ISL mapping.
+- **ISL Visualization**: Displays ISL gestures using animated GIFs for phrases and static images for individual letters.
+- **Scalability**: A modular design that allows for the inclusion of a more extensive ISL vocabulary and non-manual signs in the future.
 
-## Objective
-**This Audio to Sign Language converter aims at :**
-- Providing information access and services to deaf people in Indian sign language.
-- Developing a scalable project which can be extended to capture whole vocabulary of ISL through manual and non-manual signs
+---
 
-It can be developed as a desktop or mobile application to enable specially abled people to communicate easily and effectively with others
+## Objectives
+The **Indian Sign Language Audio-to-Visual Translator (ISLAT)** aims to:
+1. Bridge the communication gap between the deaf and hearing communities.
+2. Provide real-time, accurate translation of spoken language into ISL visuals.
+3. Create a scalable and user-friendly tool for various societal contexts like education, public spaces, and healthcare.
 
-**Sign language is a visual language that is used by deaf people as their mother tongue. Unlike acoustically conveyed sound patterns, sign language uses body language and manual communication to fluidly convey the thoughts of a person. Due to considerable time required in learning the Sign Language, people find it difficult to communicate with these specially abled people, creating a communication gap. Thus, we propose an application which takes in live speech or audio recording as input, converts it into text and displays the relevant Indian Sign Language images or GIFs.**
+---
 
-## Algorithm
-Audio to Sign Language Translator
-1. Start
-2. Getting the Speech
-   1. Listen for 1 second and calibrate the energy threshold for ambient noise
-levels.
-   2. Listen the Speech using Microphone.
-Now the energy threshold is already set to a good value, and we can
-reliably catch speech right away.
-3. Recognise the Speech.
-4. Convert Speech to Text.
-   1. Make the Text to lowercase for further manipulation.
-5. Detected Text
-   1. If “goodbye” then exit.
-   2.Else if Detected Text in predefined Dictionary Words. Display
-respective GIFs of the Phrase.
-   3. Else Count the Letters of the Word/Phrase.
-      1. Display the Visual of the phrase with some delay of Actions.
-   4. Continue all the steps from Step 3, and continue till the Speech Ends.
-6. If Error in Step 2, That is if no Speech Detected then display error message
-“Could not listen”.
+## Algorithm Overview
 
-**Due to considerable time required in learning the Sign Language, people find it difficult to communicate with these specially abled people, creating a communication gap. Thus the Audio to Sign Language converter is important and significant because it helps in providing information access and services to deaf people in Indian sign language and develops a scalable project which can be extended to capture whole vocabulary of ISL through manual and non-manual signs. It also can be developed as a desktop or mobile application to enable specially abled people to communicate easily and effectively with others.**
+1. **Speech Input**:
+   - Captures real-time audio using PyAudio.
+   - Calibrates for ambient noise for better accuracy.
+2. **Speech Recognition**:
+   - Converts audio to text using Sphinx (offline) or Google Speech API (online).
+3. **Text Processing**:
+   - Normalizes text (lowercasing, removing punctuation).
+   - Matches phrases or decomposes text into letters.
+4. **ISL Mapping**:
+   - Retrieves ISL visuals (GIFs for phrases, images for letters) using a dictionary-based approach.
+5. **Visualization**:
+   - Displays ISL outputs via Tkinter (for GIFs) or Matplotlib (for letter images).
+6. **Error Handling**:
+   - Manages unrecognized input gracefully.
+7. **User Feedback**:
+   - Displays intuitive outputs and error messages for better usability.
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+- Python 3.8 or higher
+- Required libraries: `speech_recognition`, `pyaudio`, `Pillow`, `numpy`, `matplotlib`, `easygui`, `tkinter`.
+
+### Steps to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ISLAT.git
+   cd ISLAT
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+3. Run the application:
+   ```bash
+   python main.py
+
+### Usage
+1. **Launch the application and choose Live Voice from the menu**.
+2. **Speak into the microphone. The system will:**
+   - Recognize speech.
+   - Convert it to text.
+   - Display corresponding ISL visuals or GIFs.
+3. **To exit**, say **goodbye** or select the exit option.
+
+---
+
+### Results
+
+#### Example Outputs
+- **Phrase Recognition**:
+  - **Input**: "Good morning."
+  - **Output**: Displays the GIF for "Good morning" in ISL.
+
+- **Character Mapping**:
+  - **Input**: "hello."
+  - **Output**: Sequential display of hand gestures for each letter in "hello."
+
+---
+
+### Future Scope
+- Incorporation of non-manual ISL components (facial expressions, head movements).
+- Support for multiple languages and accents.
+- Development of mobile and AR/VR applications for immersive learning.
+- Integration with IoT devices for real-time public service applications.
+
+---
+
+### References
+1. **Neural Sign Language Translation**: [IEEE Xplore](https://ieeexplore.ieee.org/document/8578910).
+2. **CISLR: Corpus for Indian Sign Language Recognition**: [EMNLP](https://aclanthology.org/2022.emnlp-main.707/).
+3. **Indian Sign Language Recognition System using SURF with SVM and CNN**: [DOI](https://doi.org/10.1016/j.array.2022.100141).
